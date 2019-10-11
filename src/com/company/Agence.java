@@ -1,5 +1,7 @@
 package com.company;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.company.Data;
@@ -18,7 +20,7 @@ public class Agence {
         this.adresse = adresse;
     }
 
-    public static Agence newAgence(String codeAgence, String adresse){
+    public static Agence newAgence(String codeAgence, String adresse) throws SQLException, IOException, ClassNotFoundException {
         //TODO:
         //Implémenter Data.getLatestAgence();
         Data.getLatestAgence();
@@ -27,7 +29,6 @@ public class Agence {
         //TODO :
         //Implémenter Data.addAgence(newAgence);
         Agence.Agences.add(newAgence);
-
         return  newAgence;
     }
 
