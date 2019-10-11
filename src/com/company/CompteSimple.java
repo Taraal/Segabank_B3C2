@@ -13,4 +13,8 @@ public class CompteSimple {
     public void retrait(){
 
     }
+
+    public CompteSimple(){
+
+    }
 }
