@@ -23,8 +23,8 @@ public class Agence {
     public static Agence newAgence(String codeAgence, String adresse) throws SQLException, IOException, ClassNotFoundException {
         //TODO:
         //Implémenter Data.getLatestAgence();
-        Data.getLatestAgence();
-        int id = 0; //A changer
+        int id = Data.getLatestAgenceId() + 1;
+         //A changer
         Agence newAgence = new Agence(id, codeAgence, adresse);
         //TODO :
         //Implémenter Data.addAgence(newAgence);
