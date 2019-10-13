@@ -23,6 +23,7 @@ public class CompteDAO implements IDAO<Long, Compte>{
     private static final String REMOVE_QUERY = "DELETE FROM compte WHERE id_compte = ?";
     private static final String FIND_QUERY = "SELECT * FROM compte WHERE id_compte = ?";
     private static final String FIND_ALL_QUERY = "SELECT * FROM compte";
+    private static final String FIND_BY_AGENCY = "SELECT * FROM compte WHERE id_agence = ?";
 
     private static final Map<String, Integer> typesCompte = new HashMap<>();
 
@@ -159,6 +160,33 @@ public class CompteDAO implements IDAO<Long, Compte>{
 
     }
 
+
+    public List<Compte> findByAgency(int idAgence) throws SQLException, IOException, ClassNotFoundException{
+
+        List<Compte> list = new ArrayList<>();
+        Connection connection = PersistenceManager.getConnection();
+        if ( connection != null ) {
+            try ( PreparedStatement ps = connection.prepareStatement( FIND_BY_AGENCY ) ) {
+                ps.setInt(1, idAgence);
+                try ( ResultSet rs = ps.executeQuery() ) {
+                    while ( rs.next() ) {
+                        Compte compte = null;
+                        if(rs.getInt( "id_typeCompte" ) == 3)
+                            compte=new ComptePayant(rs.getInt( "id_compte" ), rs.getDouble("solde"), rs.getInt("id_agence"));
+                        else if(rs.getInt( "id_typeCompte" ) == 2)
+                            compte=new CompteEpargne(rs.getInt( "id_compte" ), rs.getDouble("solde"), rs.getDouble("interet"), rs.getInt("id_agence"));
+                        else if(rs.getInt( "id_typeCompte" ) == 1)
+                            compte=new CompteSimple(rs.getInt( "id_compte" ), rs.getDouble("solde"), rs.getInt("id_agence"), rs.getDouble("decouvert"));
+
+
+                        list.add( compte );
+                    }
+                }
+            }
+        }
+        return list;
+
+    }
 
 
 }
