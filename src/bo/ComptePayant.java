@@ -2,16 +2,14 @@ package bo;
 
 public class ComptePayant extends Compte {
 
-    private double taxe;
+    private double taxe = 1.00;
 
-    public ComptePayant(int identifiant, double solde, int id_agence, double taxe) {
+    public ComptePayant(int identifiant, double solde, int id_agence) {
         super(identifiant, solde, id_agence);
-        this.taxe = taxe;
     }
 
-    public ComptePayant(double solde, int id_agence, double taxe) {
+    public ComptePayant(double solde, int id_agence) {
         super(solde, id_agence);
-        this.taxe = taxe;
     }
 
     @Override

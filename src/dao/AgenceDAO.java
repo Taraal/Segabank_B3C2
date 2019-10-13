@@ -1,4 +1,4 @@
-package dal;
+package dao;
 
 
 import java.io.IOException;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bo.Agence;
-import jdk.jshell.PersistentSnippet;
 
 public class AgenceDAO implements IDAO<Integer, Agence> {
 
