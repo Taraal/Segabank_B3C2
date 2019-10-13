@@ -1,4 +1,6 @@
-package com.company;
+package bo;
+
+import bo.Compte;
 
 public class CompteEpargne extends Compte {
 

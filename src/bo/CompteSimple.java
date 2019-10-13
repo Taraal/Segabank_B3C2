@@ -1,6 +1,6 @@
-package com.company;
+package bo;
 
-public class ComptePayant {
+public class CompteSimple {
 
     public String toString(){
         String fullString = "";
@@ -11,6 +11,10 @@ public class ComptePayant {
     }
 
     public void retrait(){
+
+    }
+
+    public CompteSimple(){
 
     }
 }

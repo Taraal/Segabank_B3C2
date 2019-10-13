@@ -1,4 +1,4 @@
-package com.company;
+package bo;
 
 abstract public class Compte {
     private int id_compte;
